@@ -37,6 +37,9 @@ return new class extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('trains');
+		Schema::dropIfExists('trains', function (Blueprint $table) {
+			$table->string('codice_treno', 7)->change();
+			$table->smallInteger('numero_carrozze')->change();
+		});
 	}
 };
